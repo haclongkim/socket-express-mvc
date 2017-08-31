@@ -1,0 +1,13 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <h1>{{title}}</h1>
+  <p>Welcome to {{title}}</p>
+  <script src="{{ env.HOST }}:{{ env.SOCKET_PORT }}/socket.io/socket.io.js"></script>
+  <script>
+      var socket = io('{{ env.HOST }}:{{ env.SOCKET_PORT }}');
+      socket.on('connection', function(){console.log('xxx')});
+      socket.on('notify', function(data){console.log('notify')});
+      socket.on('disconnect', function(){});
+  </script>
+{% endblock %}
